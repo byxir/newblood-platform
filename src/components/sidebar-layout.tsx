@@ -37,7 +37,7 @@ const Sidebar = ({ children }: ISidebar) => {
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-black bg-opacity-75" />
+              <div className="fixed inset-0 bg-black bg-opacity-95" />
             </Transition.Child>
 
             <div className="fixed inset-0 z-40 flex">
@@ -74,15 +74,15 @@ const Sidebar = ({ children }: ISidebar) => {
                       </button>
                     </div>
                   </Transition.Child>
-                  <div className="h-0 flex-1 overflow-y-auto pt-5 pb-4">
-                    <div className="flex flex-shrink-0 items-center px-4">
+                  <div className="h-full flex-1 overflow-y-auto pt-5">
+                    <div className="mr-8 grid h-20 items-center justify-items-end bg-redAccent">
                       <img
-                        className="h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
-                        alt="Your Company"
+                        src="../../logowhite.png"
+                        alt=""
+                        className="mr-3 w-3/4"
                       />
                     </div>
-                    <nav className="mt-5 space-y-1 px-2">
+                    <nav className="grid h-[calc(100%-5rem)] grid-rows-[max-content_max-content_max-content] content-center justify-end justify-items-end gap-4 p-4">
                       {navigation.map((item) => (
                         <a
                           key={item.name}
@@ -91,7 +91,7 @@ const Sidebar = ({ children }: ISidebar) => {
                             item.current
                               ? "bg-sidebarBg text-white"
                               : "text-white hover:bg-sidebarBg hover:text-white",
-                            "group flex items-center rounded-md px-2 py-2 text-base"
+                            "group flex w-max items-center rounded-md px-2 py-2 text-2xl font-extralight"
                           )}
                         >
                           {item.name}
@@ -136,14 +136,14 @@ const Sidebar = ({ children }: ISidebar) => {
         </Transition.Root>
 
         {/* Static sidebar for desktop */}
-        <div className="hidden md:fixed md:inset-y-0 md:flex md:w-72 md:flex-col">
+        <div className="hidden md:fixed md:inset-y-0 md:flex md:w-60 md:flex-col lg:w-64 xl:w-72">
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex min-h-0 flex-1 flex-col bg-sidebarBg">
             <div className="flex flex-1 flex-col overflow-y-auto pt-8 pb-4">
               <div className="mr-8 grid h-20 items-center justify-items-end bg-redAccent">
                 <img src="../../logowhite.png" alt="" className="mr-3 w-3/4" />
               </div>
-              <nav className="grid h-full grid-rows-[max-content_max-content_max-content] content-center justify-end justify-items-end gap-4 p-5">
+              <nav className="grid h-full grid-rows-[max-content_max-content_max-content] content-center justify-end justify-items-end gap-4 md:p-3 lg:p-5">
                 {navigation.map((item) => (
                   <a
                     key={item.name}
@@ -152,7 +152,7 @@ const Sidebar = ({ children }: ISidebar) => {
                       item.current
                         ? "bg-sidebarBg text-white"
                         : "text-white hover:bg-sidebarBg hover:text-white",
-                      "group flex w-max items-center rounded-md px-2 py-2 text-4xl tracking-wide"
+                      "group flex w-max items-center rounded-md px-2 py-2 text-4xl"
                     )}
                   >
                     {item.name}
@@ -189,18 +189,23 @@ const Sidebar = ({ children }: ISidebar) => {
             </div>
           </div>
         </div>
-        <div className="flex flex-1 flex-col md:pl-72">
-          <div className="sticky top-0 z-10 bg-sidebarBg pl-1 pt-1 sm:pl-3 sm:pt-3 md:hidden">
+        <div className=" md:pl-60 lg:pl-64 xl:pl-72">
+          <div className="sticky top-0 z-10 grid grid-cols-2 items-center justify-between justify-items-end bg-sidebarBg md:hidden">
+            <div className="grid h-full w-36 items-center justify-items-end justify-self-start">
+              <img src="../../logowhite.png" alt="logo" className="mr-1 w-32" />
+            </div>
             <button
               type="button"
-              className="-ml-0.5 -mt-0.5 inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900"
+              className="-ml-0.5 -mt-0.5 grid h-12 w-12 items-center justify-center text-white hover:text-gray-500"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
-          <main className="w-full ">{children}</main>
+          <main className="grid w-full justify-items-center bg-bg">
+            {children}
+          </main>
         </div>
       </div>
     </>

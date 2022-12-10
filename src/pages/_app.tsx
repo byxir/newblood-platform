@@ -13,9 +13,11 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <div className="font-extralight">
+      <div className="font-mon font-light">
         <Sidebar>
-          <Component {...pageProps} />
+          <div className="bg-bg">
+            <Component {...pageProps} />
+          </div>
         </Sidebar>
       </div>
     </SessionProvider>
